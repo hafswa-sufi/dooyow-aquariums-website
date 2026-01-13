@@ -1,16 +1,22 @@
 /* =====================
-   CSS RESET & VARIABLES
+   RESET & VARIABLES
 ===================== */
 
 :root {
-  --bg-dark: #0e1a24;
-  --bg-darker: #0b141c;
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --accent: #2dd4bf;
-  --border-muted: rgba(255, 255, 255, 0.08);
+  /* LIGHT AQUATIC BASE */
+  --bg-dark: #1b8bb5;        /* brighter ocean blue */
+  --bg-darker: #0e2a3a;      /* softened deep blue (not black) */
+
+  --text-dark: #0e1a24;
+  --text-light: #ffffff;
+  --text-muted: #d1e6f2;     /* lighter muted text */
+
+  --accent: #ff6b6b;
+  --border-muted: rgba(255, 255, 255, 0.15);
+
   --container-width: 1100px;
 }
+
 
 * {
   margin: 0;
@@ -20,13 +26,19 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
+  background-color: #0e2a3a; /* neutral deep base */
+  color: var(--text-light);
   line-height: 1.6;
 }
 
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* =====================
-   GLOBAL STYLES
+   GLOBAL
 ===================== */
 
 .container {
@@ -35,22 +47,13 @@ body {
   padding: 0 1.5rem;
 }
 
+section {
+  padding: 6rem 0;
+}
+
 h1, h2, h3 {
   font-weight: 600;
   letter-spacing: 0.5px;
-}
-
-h2 {
-  margin-bottom: 1rem;
-}
-
-p {
-  color: var(--text-secondary);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 /* =====================
@@ -61,57 +64,90 @@ a {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(14, 26, 36, 0.9);
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 60, 85, 0.95),
+    rgba(10, 60, 85, 0.85)
+  );
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--border-muted);
   z-index: 1000;
 }
 
+
 .navbar .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 70px;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .logo {
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  margin-left: -24px;
 }
+
+.logo img {
+  height: 120px; /* 🔥 bold */
+  width: auto;
+  filter:
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6))
+    contrast(1.25)
+    saturate(1.2);
+}
+
+
+/* LIGHT LOGO (on dark/hero backgrounds) */
+
+
+
 
 .nav-links a {
   margin-left: 2rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .nav-links a:hover {
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 /* =====================
-   HERO
+   HERO (IMMERSIVE)
 ===================== */
 
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(
-      rgba(14, 26, 36, 0.85),
-      rgba(14, 26, 36, 0.85)
+  background:
+    linear-gradient(
+      120deg,
+      rgba(0, 35, 55, 0.75),
+      rgba(0, 90, 120, 0.55)
     ),
     url("../images/ui/hero.jpg") center/cover no-repeat;
 }
 
+.hero-content {
+  max-width: 650px;
+}
+
 .hero-content h1 {
-  font-size: 2.5rem;
-  max-width: 700px;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .hero-content p {
-  margin: 1rem 0 2rem;
-  max-width: 500px;
+  margin: 1.2rem 0 2.2rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* =====================
@@ -119,32 +155,40 @@ a {
 ===================== */
 
 .btn-primary {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-size: 0.9rem;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 0.9rem 2.4rem;
+  font-size: 0.85rem;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 .btn-primary:hover {
-  background: var(--accent);
-  color: #0e1a24;
+  background: #ff5252;
 }
 
 /* =====================
-   SECTIONS
+   ABOUT / SERVICES / CONTACT
 ===================== */
 
-section {
-  padding: 6rem 0;
+.about,
+.services {
+  background-color: #12394f; /* lighter than bg-darker */
 }
 
-.about,
-.services,
 .contact {
   background-color: var(--bg-darker);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 4rem;
+}
+
+
+
+.about p,
+.contact p {
+  max-width: 600px;
+  color: var(--text-muted);
 }
 
 /* =====================
@@ -155,14 +199,15 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .service-card {
   padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border-muted);
-  background-color: var(--bg-dark);
 }
+
 
 /* =====================
    CATALOG
@@ -170,7 +215,8 @@ section {
 
 .catalog-subtext {
   max-width: 600px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-muted);
 }
 
 .catalog-tabs {
@@ -183,19 +229,28 @@ section {
 .tab-btn {
   background: none;
   border: none;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
   letter-spacing: 1px;
-  cursor: pointer;
   padding-bottom: 0.5rem;
+  cursor: pointer;
   border-bottom: 2px solid transparent;
 }
 
 .tab-btn.active,
 .tab-btn:hover {
   color: var(--accent);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--accent),
+    #38bdf8
+  );
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
+
 
 .fish-grid {
   display: grid;
@@ -204,18 +259,24 @@ section {
 }
 
 /* =====================
-   FISH CARD (JS WILL USE)
+   FISH CARD
 ===================== */
 
 .fish-card {
-  background-color: var(--bg-darker);
-  border: 1px solid var(--border-muted);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
 
+
 .fish-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 .fish-card img {
@@ -229,22 +290,22 @@ section {
 }
 
 .fish-card-content h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
 }
 
 .fish-card-content span {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .enquire-btn {
   display: inline-block;
   margin-top: 1rem;
+  padding: 0.45rem 1.2rem;
   font-size: 0.75rem;
-  color: var(--accent);
   border: 1px solid var(--accent);
-  padding: 0.4rem 1rem;
+  color: var(--accent);
 }
 
 /* =====================
@@ -259,7 +320,7 @@ section {
 
 .contact-btn {
   border: 1px solid var(--border-muted);
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.6rem;
   font-size: 0.85rem;
 }
 
@@ -272,7 +333,7 @@ section {
   padding: 2rem 0;
   text-align: center;
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 /* =====================
@@ -285,6 +346,72 @@ section {
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
+}
+
+.about,
+.services {
+  padding: 4rem 0;
+}
+
+.about p,
+.services p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.about .container {
+  max-width: 900px;
+}
+.about,
+.services {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.catalog {
+  background: linear-gradient(
+    180deg,
+    #0e2a3a 0%,
+    #123f57 40%,
+    #0e2a3a 100%
+  );
+  padding: 6rem 0 3rem;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    #12394f
+  );
+}
+
+.catalog-subtext,
+.about p,
+.contact p {
+  color: rgba(209, 230, 242, 0.9);
+}
+ 
+
+#contact h2 {
+  margin-bottom: 0.8rem;
+}
+
+#contact p {
+  margin-bottom: 0.8rem;
+}
+
+.contact {
+  background: linear-gradient(
+    180deg,
+    #0e2a3a 0%,
+    #0b2230 100%
+  );
 }

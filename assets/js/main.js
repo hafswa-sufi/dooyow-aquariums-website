@@ -100,11 +100,11 @@ const fishCatalog = {
 
 const fishGrid = document.getElementById("fish-grid");
 const tabButtons = document.querySelectorAll(".tab-btn");
-const WHATSAPP_NUMBER = "+254 739 776 622";
+const WHATSAPP_NUMBER = "254739776622";
 
 function createFishCard(fish) {
   const message = encodeURIComponent(
-    `Hello, I’m interested in wholesale availability of ${fish.name}.`
+    `Hello Dooyow little fish acquatics, I’m interested in wholesale availability of ${fish.name}.`
   );
 
   return `
